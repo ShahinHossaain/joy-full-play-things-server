@@ -55,7 +55,21 @@ async function run() {
             res.send(result);
         })
 
+        app.get('/toys', async (req, res) => {
+            let query = {};
+            if (req.query?.subCategory) {
+                query = { subCategory: req.query.subCategory }
+            }
+            if (req.query?.userEmail) {
+                query = { userEmail: req.query.userEmail }
+            }
 
+            console.log(query);
+            const cursor = toysCollection.find(query);
+            const result = await cursor.toArray();
+            // console.log(result);
+            res.send(result);
+        })
 
         app.get('/toys/:id', async (req, res) => {
             id = req.params.id;
