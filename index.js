@@ -71,13 +71,7 @@ async function run() {
             res.send(result);
         })
 
-        app.get('/toys/:id', async (req, res) => {
-            id = req.params.id;
-            // console.log(id);
-            const query = { _id: new ObjectId(id) };
-            const result = await toysCollection.findOne(query);
-            res.send(result)
-        })
+
 
         app.delete('/toys/:id', async (req, res) => {
             id = req.params.id;
